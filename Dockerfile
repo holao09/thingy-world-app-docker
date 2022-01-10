@@ -10,6 +10,6 @@ RUN cd /app && sed -i '/"local":/s/.*/    "local": "live-server --cors dist\/ --
 
 RUN cd /app && npm i && npm run build
 CMD cd /app && \
-  sed -i "s/Authorization:\"Bearer .*?\"/Authorization:\"Bearer $API_KEY\"/g" dist/js/scripts-min.js && \
-  sed -i "s/defaultAccessToken=\".*?\"/defaultAccessToken=\"$CESIUM_KEY\"/g" dist/js/Cesium/Cesium.js && \
+  sed -i "s/Authorization:\"Bearer [^\"]*\"/Authorization:\"Bearer $API_KEY\"/g" dist/js/scripts-min.js && \
+  sed -i "s/defaultAccessToken=\"[^\"]*\"/defaultAccessToken=\"$CESIUM_KEY\"/g" dist/js/Cesium/Cesium.js && \
   npm run local
