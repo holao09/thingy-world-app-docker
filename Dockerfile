@@ -6,7 +6,7 @@ ENV CESIUM_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5ZWMwMDU0Yi03MjFl
 RUN apt-get update && apt-get install -y git
 RUN mkdir -p /app
 RUN git clone https://github.com/nRFCloud/thingy-world-app.git /app
-RUN cd /app && sed -i '/"local":/s/.*?/    "local": "live-server --cors dist\/ --host=0.0.0.0 --port=8888",/' package.json
+RUN cd /app && sed -i '/"local":/s/.*/    "local": "live-server --cors dist\/ --host=0.0.0.0 --port=8888",/' package.json
 
 RUN cd /app && npm i && npm run build
 CMD cd /app && \
